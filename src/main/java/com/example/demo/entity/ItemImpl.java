@@ -6,6 +6,10 @@ public class ItemImpl implements Item{
     private int price;
     private static long counter;
 
+    static {
+        counter = 0;
+    }
+
     public ItemImpl(){}
 
     public ItemImpl(int price, String name){
