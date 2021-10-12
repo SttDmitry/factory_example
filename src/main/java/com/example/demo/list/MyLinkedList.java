@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
-public class MyLinkedList<T> implements Iterable<T> {
+public class MyLinkedList<T> implements Iterable<T>, MyList<T>{
     private Node first;
     private Node last;
 
@@ -88,14 +88,14 @@ public class MyLinkedList<T> implements Iterable<T> {
         }
 
         @Override
-        public void add(T t) {
+        public void add(T item) {
             if (nextPoint) {
-                Node newNode = new Node (current, t, current.getNext());
+                Node newNode = new Node (current, item, current.getNext());
                 current.setNext(newNode);
                 newNode.getNext().setPrev(newNode);
                 current = newNode;
             } else {
-                Node newNode = new Node (current, t, current.getNext());
+                Node newNode = new Node (current, item, current.getNext());
                 current.setNext(newNode);
                 newNode.getNext().setPrev(newNode);
             }
@@ -256,6 +256,27 @@ public class MyLinkedList<T> implements Iterable<T> {
         current.getNext().setPrev(newNode);
         current.setNext(newNode);
         size++;
+    }
+
+    @Override
+    public void add(T item) {
+        insertLast(item);
+    }
+
+    @Override
+    public boolean remove(int index) {
+        if (size < index) return false;
+        else
+        {
+            Node current = first;
+            int i = 0;
+            while (i < index ) {
+                current = current.getNext();
+                i++;
+            }
+            remove(current.value);
+            return true;
+        }
     }
 
     public boolean remove(T item) {

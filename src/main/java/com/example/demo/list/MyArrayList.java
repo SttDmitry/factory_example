@@ -35,7 +35,7 @@ public class MyArrayList<T extends Comparable<T>> implements MyList<T>{
         size++;
     }
 
-    public final T remove(int index) throws IndexOutOfBoundsException {
+    public boolean remove(int index) throws IndexOutOfBoundsException {
         indexAccept(index);
         T temp = list[index];
         for (int i = index; i < size; i++) {
@@ -43,13 +43,13 @@ public class MyArrayList<T extends Comparable<T>> implements MyList<T>{
         }
         size--;
         list[size] = null;
-        return temp;
+        return true;
     }
 
-    public T remove(T item) throws IndexOutOfBoundsException {
+    public boolean remove(T item) throws IndexOutOfBoundsException {
         int i = indexOf(item);
         if (i == -1) {
-            return null;
+            return false;
         }
         return remove(i);
     }
