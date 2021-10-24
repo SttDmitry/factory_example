@@ -13,5 +13,7 @@ public class Test {
 
         students.addAll(studentRepository.getStudentsList());
         System.out.println(students);
+        studentRepository.deleteStudentById(1);
+        System.out.println(studentRepository.getStudentsList());
     }
 }
