@@ -1,0 +1,14 @@
+<hibernate-mapping>
+    <class name="com.example.demo.school.Student" table="student" catalog="school">
+        <id name="id" type="java.lang.Integer">
+            <column name="idStudent" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="nameStudent" length="50"/>
+        </property>
+        <property name="mark" type="Double">
+            <column name="markStudent"  />
+        </property>
+    </class>
+</hibernate-mapping>
